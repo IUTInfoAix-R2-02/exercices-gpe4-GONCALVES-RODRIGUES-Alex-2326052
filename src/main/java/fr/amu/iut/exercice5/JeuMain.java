@@ -21,7 +21,7 @@ public class JeuMain extends Application {
     public void start(Stage primaryStage) {
 
         root = new BorderPane();
-
+        root.setStyle("-fx-background-color: #454141");
         //Acteurs du jeu
         Personnage pacman = new Pacman();
         Personnage fantome = new Fantome();
@@ -33,8 +33,8 @@ public class JeuMain extends Application {
         creeper.setLayoutX(44*10);
         creeper.setLayoutY(12*10);
         // on positionne le pacman 16 psoitions vers la droite et 20 vers le bas
-        pacman.setLayoutX(6 * 10);
-        pacman.setLayoutY(10 * 10);
+        pacman.setLayoutX(10 * 10);
+        pacman.setLayoutY(8 * 10);
 
 
 
@@ -46,17 +46,33 @@ public class JeuMain extends Application {
         jeu.getChildren().add(creeper);
 
         // Creation des obstacles
-        Obstacle obstacle1 = new Obstacle(280, 120, 20, 220);
+        Obstacle obstacle1 = new Obstacle(280, 100, 20, 220);
         Obstacle obstacle2 = new Obstacle(20, 60, 20, 20);
         Obstacle obstacle3 = new Obstacle(160, 120, 220, 20);
         Obstacle obstacle4 = new Obstacle(200, 160, 60, 20);
         Obstacle obstacle5 = new Obstacle(20, 20, 60, 20);
         Obstacle obstacle6 = new Obstacle(360, 160, 60, 20);
         Obstacle obstacle7 = new Obstacle(320, 160, 20, 20);
+        Obstacle obstacle8 = new Obstacle(20, 100, 20, 80);
+        Obstacle obstacle9 = new Obstacle(60, 60, 20, 140);
+        Obstacle obstacle10 = new Obstacle(0, 200, 100, 20);
+        Obstacle obstacle11 = new Obstacle(100, 0, 20, 80);
+        Obstacle obstacle12 = new Obstacle(100, 100, 20,80);
+        Obstacle obstacle13 = new Obstacle(140, 160, 40,20);
+        Obstacle obstacle14 = new Obstacle(120, 120, 20,20);
+        Obstacle obstacle15 = new Obstacle(140, 80, 60,20);
+        Obstacle obstacle16 = new Obstacle(140, 0, 20,60);
+        Obstacle obstacle17 = new Obstacle(180, 20, 80,20);
+        Obstacle obstacle18 = new Obstacle(280, 0, 20,80);
+        Obstacle obstacle19 = new Obstacle(220, 60, 40, 40);
+        Obstacle petitcarre = new Obstacle(180, 60, 20, 20);
         Obstacle baseF1 = new Obstacle(400, 100, 20, 80);
         Obstacle baseF2 = new Obstacle(400, 100, 80, 20);
         Obstacle baseF3 = new Obstacle(480,100, 20, 100);
         Obstacle baseF4 = new Obstacle(400, 180, 60, 20);
+        // Construction des limitations de la map a la main
+        Obstacle coteD = new Obstacle(640, 0, 20, 480);
+        Obstacle coteB = new Obstacle(0, 480, 640, 20);
 
         ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
 
@@ -67,10 +83,25 @@ public class JeuMain extends Application {
         obstacles.add(obstacle5);
         obstacles.add(obstacle6);
         obstacles.add(obstacle7);
+        obstacles.add(obstacle8);
+        obstacles.add(obstacle9);
+        obstacles.add(obstacle10);
+        obstacles.add(obstacle11);
+        obstacles.add(obstacle12);
+        obstacles.add(obstacle13);
+        obstacles.add(obstacle14);
+        obstacles.add(obstacle15);
+        obstacles.add(obstacle16);
+        obstacles.add(obstacle17);
+        obstacles.add(obstacle18);
+        obstacles.add(obstacle19);
+        obstacles.add(petitcarre);
         obstacles.add(baseF1);
         obstacles.add(baseF2);
         obstacles.add(baseF3);
         obstacles.add(baseF4);
+        obstacles.add(coteD);
+        obstacles.add(coteB);
         for(int i =0; i<obstacles.size(); i++){
             jeu.getChildren().add(obstacles.get(i));
         }
