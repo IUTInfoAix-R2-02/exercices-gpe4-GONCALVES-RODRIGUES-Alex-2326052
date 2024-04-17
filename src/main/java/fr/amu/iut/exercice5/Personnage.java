@@ -10,6 +10,7 @@ class Personnage extends Group {
     private final Circle corps;
     private String direction;
 
+
     public Personnage(String direction, Color couleurContour, Color couleurRemplissage) {
         this.direction = direction;
         corps = new Circle(10, 10, LARGEUR_MOITIE_PERSONNAGE, couleurContour);
