@@ -1,6 +1,8 @@
 package fr.amu.iut.exercice12;
 
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -60,7 +62,6 @@ public class Palette extends Application {
 
         gestionnaireEvenement = (event) -> {
             sourceOfEvent = (CustomButton) event.getSource();
-            
         };
 
         vert.setOnAction(gestionnaireEvenement);
@@ -68,6 +69,11 @@ public class Palette extends Application {
         bleu.setOnAction(gestionnaireEvenement);
 
         boutons.getChildren().addAll(vert, rouge, bleu);
+
+        ChangeListener<Number> nbClicsListener = this::updateUI;
+        vert.nbClicsProperty().addListener(nbClicsListener);
+        rouge.nbClicsProperty().addListener(nbClicsListener);
+        bleu.nbClicsProperty().addListener(nbClicsListener);
 
         root.setCenter(panneau);
         root.setTop(texteDuHaut);
@@ -78,6 +84,26 @@ public class Palette extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+    private void handleButtonAction(ActionEvent event, CustomButton button) {
+        sourceOfEvent = button;
+        button.setNbClics(button.getNbClics() + 1);
+    }
 
+    private void updateUI(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+        if (sourceOfEvent != null) {
+            String colorName = sourceOfEvent.getText();
+            String colorHex = sourceOfEvent.getCouleur();
+            int clicks = sourceOfEvent.getNbClics();
+
+            texteDuHaut.setText(colorName + " choisi " + clicks + " fois");
+            panneau.setStyle("-fx-background-color: " + colorHex);
+            texteDuBas.setText(colorName + " est une jolie couleur !");
+            texteDuBas.setStyle("-fx-text-fill: " + colorHex);
+        }
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
 
