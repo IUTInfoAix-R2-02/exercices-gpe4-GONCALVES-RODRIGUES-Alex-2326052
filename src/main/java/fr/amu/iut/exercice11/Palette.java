@@ -1,4 +1,4 @@
-package fr.amu.iut.exercice1;
+package fr.amu.iut.exercice11;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -6,10 +6,12 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
@@ -30,6 +32,7 @@ public class Palette extends Application {
     private BorderPane root;
     private Pane panneau;
     private HBox boutons;
+
 
     private Label texteDuBas;
 
@@ -57,7 +60,27 @@ public class Palette extends Application {
         rouge = new Button("Rouge");
         bleu = new Button("Bleu");
 
-        /* VOTRE CODE ICI */
+        vert.addEventHandler(MouseEvent.MOUSE_CLICKED, actionEvent -> {
+            ++nbVert;
+            panneau.setStyle("-fx-background-color: green");
+            texteDuHaut.setText("Vert choisi "+nbVert+" fois");
+            texteDuBas.setTextFill(Color.GREEN);
+            texteDuBas.setText("Le Vert est une jolie couleur !");
+        });
+        rouge.addEventHandler(MouseEvent.MOUSE_CLICKED, actionEvent -> {
+            ++nbRouge;
+            panneau.setStyle("-fx-background-color: red");
+            texteDuHaut.setText("Rouge choisi "+nbRouge+" fois");
+            texteDuBas.setTextFill(Color.RED);
+            texteDuBas.setText("Le Rouge est une jolie couleur !");
+        });
+        bleu.addEventHandler(MouseEvent.MOUSE_CLICKED, actionEvent -> {
+            ++nbBleu;
+            panneau.setStyle("-fx-background-color: blue");
+            texteDuHaut.setText("Bleu choisi "+nbBleu+" fois");
+            texteDuBas.setTextFill(Color.BLUE);
+            texteDuBas.setText("Le Bleu est une jolie couleur !");
+        });
 
         boutons.getChildren().addAll(vert, rouge, bleu);
 
