@@ -23,9 +23,17 @@ public class ConvertisseurTemperatures extends Application {
         Slider celsiusSlider = new Slider(0, 100, 0);
         celsiusSlider.setOrientation(Orientation.VERTICAL);
         celsiusSlider.setMinHeight(900); // Hauteur minimale pour étirer le slider
+        celsiusSlider.setMajorTickUnit(10); // Grandes unités de 10 en 10
+        celsiusSlider.setMinorTickCount(1); // Une petite unité par grande unité (10 unités)
+        celsiusSlider.setBlockIncrement(1); // Incrémentation par pas de 1
+
         Slider fahrenheitSlider = new Slider(0, 212, 32);
         fahrenheitSlider.setOrientation(Orientation.VERTICAL);
         fahrenheitSlider.setMinHeight(900); // Hauteur minimale pour étirer le slider
+        fahrenheitSlider.setMajorTickUnit(10); // Grandes unités de 10 en 10
+        fahrenheitSlider.setMinorTickCount(1); // Une petite unité par grande unité (10 unités)
+        fahrenheitSlider.setBlockIncrement(1); // Incrémentation par pas de 1
+
 
         // Création des TextField
         TextField celsiusField = new TextField();
